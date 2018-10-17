@@ -1,23 +1,21 @@
 FROM openshift/origin-ansible
-
 MAINTAINER Andrew Block “andrew.block@redhat.com”
 
 USER root
 
 # Update System and install clients
-RUN yum install -y epel-release; \
-  yum install -y --setopt=tsflags=nodocs https://repos.fedorapeople.org/repos/openstack/openstack-pike/rdo-release-pike-1.noarch.rpm ;\
-  yum install -y python-pip python-ceilometerclient \
-                 python-cinderclient python-glanceclient \
-                 python-heatclient python-neutronclient \
-                 python-novaclient python-saharaclient \
-                 python-swiftclient python-troveclient \
-                 python-openstackclient python-dns \
-                 pyOpenSSL;\
+RUN yum -y install epel-release
+RUN yum -y install --setopt=tsflags=nodocs https://repos.fedorapeople.org/repos/openstack/openstack-queens/rdo-release-queens-1.noarch.rpm
+RUN yum -y install \
+  python2-pip python-ceilometerclient \
+  python-cinderclient python-glanceclient \
+  python-heatclient python-neutronclient \
+  python-novaclient python-saharaclient \
+  python-swiftclient python-troveclient \
+  python-openstackclient python-dns \
+  python2-pyOpenSSL python2-shade; \
   yum clean all; \
-  pip install --upgrade pip six python-dateutil jinja2; \
-  easy_install --upgrade ipaddress PyYAML; \
-  pip install shade 
+  rm -rf /var/cache/yum
 
 COPY images/installer-openstack/root /
 
