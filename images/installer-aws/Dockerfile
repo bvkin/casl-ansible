@@ -2,7 +2,9 @@ FROM openshift/origin-ansible
 
 USER root
 
-RUN yum install -y python2-boto python2-boto3 python2-pip 
+RUN yum install -y python2-boto python2-boto3 python2-pip; \
+    yum clean all; \
+    rm -rf /var/cache/yum 
     
 
 RUN sed -i 's/inventory_ignore_extensions =\(.*\)/inventory_ignore_extensions =\1, .ini/g' /usr/share/ansible/openshift-ansible/ansible.cfg
