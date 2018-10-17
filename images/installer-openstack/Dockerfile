@@ -15,8 +15,9 @@ RUN yum install -y epel-release; \
                  python-openstackclient python-dns \
                  pyOpenSSL;\
   yum clean all; \
-  pip install --upgrade pip jinja2; \
-  pip install shade six
+  pip install --upgrade pip six python-dateutil jinja2; \
+  easy_install --upgrade ipaddress PyYAML; \
+  pip install shade 
 
 COPY images/installer-openstack/root /
 
