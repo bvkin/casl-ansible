@@ -26,6 +26,9 @@ dns_domain: "casl.example.com"
 dns_nameservers:
 - 192.168.1.1
 
+# Set these two to true if you wish to use vm storage
+openshift_openstack_ephemeral_volumes: false
+
 docker_volume_size: "10"
 docker_storage_block_device: "/dev/vdb"
 docker_storage_mount_point: "/var/lib/containers/docker"
