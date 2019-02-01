@@ -6,7 +6,7 @@
     - import_tasks: prep-env.yml
   tasks:
     - import_role:
-        name: ../../galaxy/openshift-ansible/roles/openshift_openstack
+        name: ../../../galaxy/openshift-ansible/roles/openshift_openstack
         tasks_from: provision.yml
       vars:
         openshift_openstack_stack_name: "{{ env_id }}.{{ dns_domain }}"
