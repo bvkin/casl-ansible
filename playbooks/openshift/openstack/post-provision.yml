@@ -1,10 +1,5 @@
 ---
 
-- set_fact:
-    openshift_openstack_ephemeral_volumes: true
-  when:
-    openshift_configure_container_storage: false
-
 # Assign hostnames
 - hosts: cluster_hosts
   pre_tasks:
