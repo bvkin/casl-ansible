@@ -1,8 +1,4 @@
-{% if docker_storage_mountpoints is defined %}
-DEVS="{{ docker_storage_mountpoints }}"
-{% else %}
-DEVS="{{ openshift_container_storage_setup.docker_dev }}"
-{% endif %}
+DEVS="{{ docker_storage_mountpoints | default(openshift_container_storage_setup.docker_dev) }}"
 VG="{{ openshift_container_storage_setup.docker_vg }}"
 DATA_SIZE="{{ openshift_container_storage_setup.docker_data_size }}"
 STORAGE_DRIVER=overlay2

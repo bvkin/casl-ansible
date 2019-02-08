@@ -26,8 +26,8 @@ dns_domain: "casl.example.com"
 dns_nameservers:
 - 192.168.1.1
 
-# Set this to false if you wish to use vm storage
-# openshift_configure_container_storage: false
+# Set this to false if you wish to use local storage, i.e.: not using an attached volume
+#openshift_configure_container_storage: false
 
 docker_volume_size: "10"
 docker_storage_block_device: "/dev/vdb"
